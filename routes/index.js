@@ -35,7 +35,7 @@ router.get('/home', function (req, res, next) {
           shuffleArray(answers);
 
           res.render('home', {
-            profile: currentUser.githubid,
+            profile: currentUser.username,
             phrase: questions[0].phrase,
             answer1: answers[0],
             answer2: answers[1],
@@ -71,7 +71,7 @@ router.post('/home', function (req, res, next) {
   shuffleArray(answers);
 
   res.render('home', {
-    profile: currentUser.githubid,
+    profile: currentUser.username,
     phrase: shuffledQuestions[0].phrase,
     answer1: answers[0],
     answer2: answers[1],
