@@ -38,10 +38,10 @@ const setupAuth = (app) => {
     passport.use(new TwitterStrategy({
         consumerKey: "XHCwlBVJSbLrHgECPCsi7TXxg",
         consumerSecret: "M2muLmIZ3IPwzHlZPVk2o5eG1FXJGgsgPkyIrkE13tNNg9xXDG",
-        callbackURL: "https://chilangosproj.herokuapp.com/twitter/auth/"
+        callbackURL: "https://chilangosproj.herokuapp.com/twitter/auth"
       },
       function(token, tokenSecret, profile, cb) {
-        models.tUser.findOrCreate({ twitterId: profile.id }, function (err, user) {
+        models.tUser.findOrCreate({ twitterid: profile.id }, function (err, user) {
           return cb(err, tUser);
         });
       }
