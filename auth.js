@@ -4,12 +4,6 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const models = require('./models');
 
-//const Sequelize = require('sequelize');
-
-
-
-
-
 const setupAuth = (app) => {
 
 

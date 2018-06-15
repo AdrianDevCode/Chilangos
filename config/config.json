@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": null,
-    "database": "mylocaldb",
+    "database": "db",
     "host": "localhost",
     "dialect": "postgres"
   },
@@ -14,11 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "hmnkedwbonngcv",
-    "password": "659c311e16d62673193fc81c722d8ee05b75dec14558451591d9962a4e5d641b",
-    "database": "chilangos",
-    "host": "https://chilangosproj.herokuapp.com/",
-    "port": 5432,
+    "username": "root",
+    "password": null,
+    "database": "db",
+    "host": "localhost",
     "dialect": "postgres"
   }
 }
