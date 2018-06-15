@@ -1,6 +1,9 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const models = require('../models');
+let shuffledQuestions, answers, previousQuestion, remainQuestions;
+let score = 0;
+
 
 //const setupAuth = require('./auth');
 const shuffleArray = array => {
@@ -15,16 +18,7 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'Chilangos' });
 });
 
-router.get('/login', function (req, res, next) {
-  //res.render('login', { title: 'stuff here for github' });
-});
-
-let shuffledQuestions;
-let answers;
-let score = 0;
-let previousQuestion;
-let remainQuestions;
-
+//GET all questions from database, shuffle them and render first question
 router.get('/home', function(req, res, next) {
 
   models.Question.findAll()
@@ -35,16 +29,18 @@ router.get('/home', function(req, res, next) {
     shuffleArray(answers);
 
     res.render('home', {
+      profile: req.user,
       phrase: questions[0].phrase,
       answer1: answers[0],
       answer2: answers[1],
       answer3: answers[2],
       answer4: answers[3],
-      score: score //ToDo: Return actual score
+      score: score 
     });
   });
 });
 
+//POST answer from user, compare to correct answer and render new question
 router.post('/home', function(req, res, next) {
   
   previousQuestion = shuffledQuestions.shift();
@@ -63,15 +59,14 @@ router.post('/home', function(req, res, next) {
   shuffleArray(answers);
   
   res.render('home', {
+    profile: req.user,
     phrase: shuffledQuestions[0].phrase,
-      answer1: answers[0],
-      answer2: answers[1],
-      answer3: answers[2],
-      answer4: answers[3],
-      score: score 
+    answer1: answers[0],
+    answer2: answers[1],
+    answer3: answers[2],
+    answer4: answers[3],
+    score: score 
   });
-
-  
 });
 
 module.exports = router;
