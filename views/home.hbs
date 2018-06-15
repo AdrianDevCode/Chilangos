@@ -2,7 +2,7 @@
     <div class="card text-center">
         <div class="card-body">
             {{#if isLoggedIn}}
-            <h6>Welcome{{profile}}</h6>
+            <h6>Welcome {{ profile}}</h6>
             <h3>What is the meaning of this phrase?</h3>
             <h1>{{phrase}}</h1>
             <form action="/home" method="POST">
