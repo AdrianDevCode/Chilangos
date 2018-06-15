@@ -11,3 +11,16 @@ module.exports = (sequelize, DataTypes) => {
   };
   return User;
 };
+
+module.exports = (sequelize, DataTypes) => {
+  var tUser = sequelize.define('User', {
+    username: DataTypes.STRING,
+    twitterid: DataTypes.STRING,
+    password: DataTypes.STRING
+  }, {});
+  tUser.associate = function(models) {
+    // associations can be defined here
+    tUser.hasMany(models.Answer);
+  };
+  return tUser;
+};

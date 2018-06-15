@@ -41,8 +41,8 @@ const setupAuth = (app) => {
         callbackURL: "https://chilangosproj.herokuapp.com/twitter/auth/"
       },
       function(token, tokenSecret, profile, cb) {
-        models.User.findOrCreate({ twitterId: profile.id }, function (err, user) {
-          return cb(err, user);
+        models.tUser.findOrCreate({ twitterId: profile.id }, function (err, user) {
+          return cb(err, tUser);
         });
       }
     ));
