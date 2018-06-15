@@ -29,13 +29,14 @@ router.get('/home', function(req, res, next) {
     shuffleArray(answers);
 
     res.render('home', {
-      profile: req.user,
+      profile: req.user.username,
       phrase: questions[0].phrase,
       answer1: answers[0],
       answer2: answers[1],
       answer3: answers[2],
       answer4: answers[3],
-      score: score 
+      score: score,
+      isLoggedIn: req.isAuthenticated()
     });
   });
 });
@@ -59,13 +60,14 @@ router.post('/home', function(req, res, next) {
   shuffleArray(answers);
   
   res.render('home', {
-    profile: req.user,
+    profile: req.user.username,
     phrase: shuffledQuestions[0].phrase,
     answer1: answers[0],
     answer2: answers[1],
     answer3: answers[2],
     answer4: answers[3],
-    score: score 
+    score: score,
+    isLoggedIn: req.isAuthenticated()
   });
 });
 
