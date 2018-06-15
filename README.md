@@ -20,7 +20,7 @@ Chilangos was built with these technologies:
 </ul>
 </hr>
 
-<h4>Authors</h4>
+<h2>Authors</h2>
 <ul>
   <li>Lillian Wakefield</li>
   <li>Adrian Piotrek Wiszniewski</li>
