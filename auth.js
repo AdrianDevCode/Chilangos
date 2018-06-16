@@ -35,18 +35,6 @@ const setupAuth = (app) => {
             })
     }))
 
-    passport.use(new TwitterStrategy({
-        consumerKey: "XHCwlBVJSbLrHgECPCsi7TXxg",
-        consumerSecret: "M2muLmIZ3IPwzHlZPVk2o5eG1FXJGgsgPkyIrkE13tNNg9xXDG",
-        callbackURL: "https://chilangosproj.herokuapp.com/twitter/auth"
-      },
-      function(token, tokenSecret, profile, cb) {
-        models.tUser.findOrCreate({ twitterid: profile.id }, function (err, user) {
-          return cb(err, tUser);
-        });
-      }
-    ));
-
     passport.serializeUser(function(user, done) {
         done(null, user.id);
     });
@@ -59,7 +47,6 @@ const setupAuth = (app) => {
     app.use(passport.session());
 
     app.get('/login', passport.authenticate('github'));
-    app.get('/login', passport.authenticate('twitter'));
 
 
     app.get('/logout', function(req, res, next){
@@ -74,14 +61,6 @@ const setupAuth = (app) => {
         (req, res) => {
             res.redirect('/home');
         });
-
-    app.get('/twitter/auth',
-        passport.authenticate('twitter', {
-            failureRedirect: '/login'
-        }),
-        (req, res) => {
-            res.redirect('/home');
-    });
 };
 
 const ensureAuthenticated = (req, res, next) => {
