@@ -22,7 +22,7 @@ router.get('/', function (req, res, next) {
 
 //attempting to add a login page
 router.get('/loginpage', function (req, res, next) {
-  res.render('loginpage', {
+  res.render('home', {
     title: 'Chilangos'
   });
 });
