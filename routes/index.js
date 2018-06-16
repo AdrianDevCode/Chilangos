@@ -20,15 +20,6 @@ router.get('/', function (req, res, next) {
   });
 });
 
-//attempting to add a login page
-router.get('/loginpage', function (req, res, next) {
-  res.render('home', {
-    title: 'Chilangos'
-  });
-});
-
-
-
 //GET all questions from database, shuffle them and render first question
 router.get('/home', function (req, res, next) {
   models.User.findById(req.user)
