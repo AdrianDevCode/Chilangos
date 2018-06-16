@@ -3,7 +3,7 @@ const GitHubStrategy = require('passport-github').Strategy;
 const TwitterStrategy = require('passport-twitter').Strategy;
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const models = require('./models');
+const models = require('./models')
 
 const setupAuth = (app) => {
 
