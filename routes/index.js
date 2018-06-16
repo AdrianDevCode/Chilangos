@@ -52,7 +52,7 @@ router.get('/home', function (req, res, next) {
 router.post('/home', function (req, res, next) {
 
   previousQuestion = shuffledQuestions.shift();
-  if (shuffledQuestions.length == 0) {
+  if (shuffledQuestions.length == 1) {
     if (req.body.answer == previousQuestion.correct_answer) {
       score += 1;
     }
