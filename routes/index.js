@@ -52,13 +52,15 @@ router.get('/home', function (req, res, next) {
 router.post('/home', function (req, res, next) {
 
   previousQuestion = shuffledQuestions.shift();
-  if (shuffledQuestions.length == 1) {
+  if (shuffledQuestions.length == 0) {
     if (req.body.answer == previousQuestion.correct_answer) {
       score += 1;
     }
     res.render('endGame', {
+      profile: currentUser.username,
       answerStatus: "End of questions!",
-      score: score
+      score: score,
+      isLoggedIn: req.isAuthenticated()
     });
     score = 0;
   }
