@@ -1,20 +1,12 @@
 let createError = require('http-errors');
 let express = require('express');
-let handlebars = require('handlebars');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
-let GitHubStrategy = require('passport-github').Strategy;
 const dotenv = require("dotenv");
-const Sequelize = require('sequelize');
-//const sequelize = new Sequelize('postgres://postgres@localhost:5432/mylocaldb');
-const sequelize = new Sequelize('postgres://hmnkedwbonngcv:659c311e16d62673193fc81c722d8ee05b75dec14558451591d9962a4e5d641b@https://chilangosproj.herokuapp.com:5432/deifsfdnk4q9p5') 
-
-
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 const setupAuth = require('./auth');
-
 dotenv.load();
 
 let app = express();

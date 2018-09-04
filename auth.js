@@ -17,9 +17,9 @@ const setupAuth = (app) => {
     }));
 
     passport.use(new GitHubStrategy({
-        clientID: "9c6f9733180638093a3e",
-        clientSecret: "dd3676a334855c0b6db74e7550f38627d112c93c",
-        callbackURL: "https://chilangosproj.herokuapp.com/github/auth"
+        clientID: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET,
+        callbackURL: process.env.CLIENT_CALLBACK,
     }, (accessToken, refreshToken, profile, done) => {
         models.User.findOrCreate({
             where: {
